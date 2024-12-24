@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
     // Initialize animation controller
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 3),
     );
 
     // Define opacity animation
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen>
       body: Center(
         child: Padding(
           padding:
-              const EdgeInsets.only(top: 390), // Add padding around the Column
+              const EdgeInsets.only(top: 320), // Add padding around the Column
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
