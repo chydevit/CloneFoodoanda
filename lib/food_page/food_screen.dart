@@ -1,8 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:test_clone_foodpenda/food_page/components/food_detail.dart';
 import 'package:test_clone_foodpenda/food_page/components/image_food_detail.dart';
+import 'package:test_clone_foodpenda/food_page/components/image_url.dart';
 import 'package:test_clone_foodpenda/food_page/components/search_button.dart';
 import 'package:test_clone_foodpenda/food_page/components/text_style.dart';
+import 'package:test_clone_foodpenda/food_page/screen/body/explore_restaurant.dart';
 import 'package:test_clone_foodpenda/food_page/screen/body/favourite_cuisines_row/favoriteRow.dart';
 import 'package:test_clone_foodpenda/food_page/screen/body/first_row.dart';
 import 'package:test_clone_foodpenda/food_page/screen/body/header.dart';
@@ -20,6 +24,7 @@ class FoodScreen extends StatefulWidget {
 class _FoodScreenState extends State<FoodScreen> {
   final int count = 10;
   bool heartPressed = false;
+  final ExploreRestaurantsItem exploreRestaurantsItem = ExploreRestaurantsItem();
 
   @override
   Widget build(BuildContext context) {
@@ -27,189 +32,154 @@ class _FoodScreenState extends State<FoodScreen> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
+        leading:const Icon(
           Icons.location_on,
           color: Colors.white,
         ),
         centerTitle: false,
-        title: Text(
+        title: const Text(
           "National Road 3",
-          style: TextStyle(
+          style:  TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
         ),
         backgroundColor: Colors.pink,
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon:const Icon(
               Icons.favorite_border_outlined,
               color: Colors.white,
             ),
           ),
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon:const Icon(
               Icons.shopping_bag_outlined,
               color: Colors.white,
             ),
           ),
         ],
-        bottom: SearchButton(),
+        bottom:const  SearchButton(),
       ),
-      body: Container(
-        width: width,
-        height: height,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //Header
               Container(
-                  color: Colors.pink,
-                  width: width,
-                  height: height / 5,
-                  child: Header()),
+                color: Colors.pink,
+                child: const Header(),
+              ),
+
+              //First Row
+             const FirstRow(),
+
+              //Second Row
+               Container(
+                height: 230,
+                width: width,
+                child: const SecondRow()
+              ),
+
+              //Third Row(Order again)
               Container(
+                margin: const EdgeInsets.only(top: 20),
+                height: 320,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(left: 10),
+                      child: TxtStyle(
+                          title: "Order again",
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22),
+                    ),
+                   const Expanded(child: ThirdRow())
+                  ],
+                ),
+              ),
+
+              //Fourth Row(Meal for one up to 30% off)
+              Container(
+                height: 420,
+                width: double.infinity,
+                decoration: BoxDecoration(
                   color: Colors.white,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      children: [
-                        Container(
-                            margin: EdgeInsets.only(top: 10),
-                            color: Colors.white,
-                            child: FirstRow()),
-                        Divider(),
-                        Container(
-                          height: 230,
-                          width: width,
-                          child: SecondRow(),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                          height: 300,
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 10),
-                                child: TxtStyle(
-                                    title: "Order again",
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 22),
-                              ),
-                              ThirdRow()
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          height: 420,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(30),
-                              topLeft: Radius.circular(30),
+                  borderRadius: const BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30),),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      spreadRadius: 2,
+                      blurRadius: 20,
+                    ),
+                  ],
+                ),
+                child: ClipRRect(borderRadius: const BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30),),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(topLeft: Radius.circular(30),),
+                            child:  Container(
+                              width: 70,
+                              height: 70,
+                              child: Image.asset('assets/meal.jpg', fit: BoxFit.cover),
                             ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.1),
-                                spreadRadius: 2,
-                                blurRadius: 20,
-                              ),
-                            ],
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(30),
-                              topLeft: Radius.circular(30),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                          SizedBox(width: 15),
+
+                          // Meal for one Row
+
+                          RichText(
+                            text: const TextSpan(
+                              style: TextStyle(color: Colors.black, fontSize: 15),  // Default style
                               children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(
-                                            30), // Ensure this matches the parent
-                                      ),
-                                      child: Container(
-                                        width: 70,
-                                        height: 70,
-                                        child: Image.asset('assets/meal.jpg',
-                                            fit: BoxFit.cover),
-                                      ),
-                                    ),
-                                    SizedBox(width: 15),
-
-                                    // Meal for one Row
-                                    TxtStyle(
-                                      title: "Meal for one",
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                    ),
-                                    SizedBox(width: 10),
-                                    TxtStyle(
-                                      title: "up to 30% off",
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color: Colors.pink,
-                                    ),
-                                  ],
+                                TextSpan(
+                                  text: 'Meal for one',
+                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
                                 ),
-
-                                // Meal for one
-                                MealForOneRow(),
+                                TextSpan(text: ' '),  // Space between the texts
+                                TextSpan(
+                                  text: 'up to 30% off',
+                                  style: TextStyle(color: Colors.pink, fontWeight: FontWeight.bold, fontSize: 15),
+                                ),
                               ],
                             ),
-                          ),
-                        ),
-                        Container(
-                            color: Colors.white,
-                            width: width,
-                            height: 190,
-                            child: FavouriteRow()),
+                          )
+                        ],
+                      ),
 
-                        Container(
-                          width: width,
-                          height: 6,
-                          color: Colors.grey.shade200,
-                        ),
+                      // Meal for one
+                     const MealForOneRow(),
+                    ],
+                  ),
+                ),
+              ),
 
-                        //Explor restaurants
-                        Container(
-                          margin: EdgeInsets.all(10),
-                          width: width,
-                          height: height,
-                          color: Colors.white,
-                          child: ImageFoodDetail(
-                            wholeWidth: width ,
-                            wholeHeight: 310,
-                            imageWidth: width,
-                            imageHeight: 220,
-                            image: 'https://assets.surlatable.com/m/15a89c2d9c6c1345/72_dpi_webp-REC-283110_Pizza.jpg',
-                            name: 'KFC',
-                            rate: '1000',
-                            caption: 'Chicken fried',
-                            time: '20-30',
-                            deliveryPrice: '2',
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
+              // Five Row (Your favourite cuisines)
+              Container(
+                  color: Colors.white,
+                  width: width,
+                  height: 190,
+                  child: FavouriteRow()
+              ),
+
+              Container(
+                margin: const EdgeInsets.all(10),
+                color: Colors.white,
+                width: width,
+                height: height * 2 ,
+                child: const ExploreRestaurant(),
+              )
             ],
           ),
-        ),
-      ),
+        )
+      )
     );
   }
 }

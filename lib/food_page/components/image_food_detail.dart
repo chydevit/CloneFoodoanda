@@ -41,13 +41,8 @@ class ImageFoodDetail extends StatefulWidget {
 class _ImageFoodDetailState extends State<ImageFoodDetail> {
   @override
   Widget build(BuildContext context) {
-    final infinityWidth = MediaQuery.of(context).size.width;
-    final infinityHeight = MediaQuery.of(context).size.height;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
+    return Container(
             width: widget.wholeWidth,
             height: widget.wholeHeight,
             decoration: BoxDecoration(
@@ -71,8 +66,7 @@ class _ImageFoodDetailState extends State<ImageFoodDetail> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Expanded(
-                    child: Container(
+                Container(
                   margin: EdgeInsets.all(10),
                   child: FoodDetail(
                       name: widget.name,
@@ -80,10 +74,9 @@ class _ImageFoodDetailState extends State<ImageFoodDetail> {
                       caption: widget.caption,
                       time: widget.time,
                       deliveryPrice: widget.deliveryPrice),
-                ))
+                )
               ],
-            )),
-      ],
+            )
     );
   }
 }

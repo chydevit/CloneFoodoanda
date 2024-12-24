@@ -20,38 +20,25 @@ class _FirstRowState extends State<FirstRow> {
           FirstRowImage(
               imageName: 'offers_image.png',
               title: "Offers"),
-          SizedBox(
-            width: 30,
-          ),
+         const SizedBox(width: 30,),
           FirstRowImage(
               imageName: 'restaurant.jpg',
               title: "New",
               title2: "restaurants"),
-          SizedBox(
-            width: 30,
-          ),
-          FirstRowImage(
-              imageName: 'pickup.png', title: "Pick-up"),
-          SizedBox(
-            width: 30,
-          ),
+         const SizedBox(width: 30,),
+          FirstRowImage(imageName: 'pickup.png', title: "Pick-up"),
+          SizedBox(width: 30,),
           FirstRowImage(
               imageName: 'send.jpg', title: "pandasends"),
-          SizedBox(
-            width: 30,
-          ),
+         const SizedBox(width: 30,),
           FirstRowImage(
               imageName: 'voucher.jpg',
               title: "Vouchers"),
-          SizedBox(
-            width: 30,
-          ),
+         const SizedBox(width: 30,),
           FirstRowImage(
               imageName: 'meal.jpg',
               title: "Meal for one"),
-          SizedBox(
-            width: 30,
-          ),
+          const SizedBox(width: 30,),
           FirstRowImage(
               imageName: 'top_restaurant.jpg',
               title: "Top",

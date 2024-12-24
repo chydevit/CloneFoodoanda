@@ -17,10 +17,7 @@ class _ThirdRowState extends State<ThirdRow> {
   Widget build(BuildContext context) {
     final ThirdRowImageUrl foodDetail = ThirdRowImageUrl();
 
-    return Container(
-      height: 255,
-      width: double.infinity,
-      child: ListView.builder(
+    return  ListView.builder(
         padding: const EdgeInsets.all(10),
         scrollDirection: Axis.horizontal,
         itemCount: foodDetail.count.length,
@@ -42,19 +39,22 @@ class _ThirdRowState extends State<ThirdRow> {
                 ),
               );
             },
-            child: ThirdRowCustom( // use ThirdRowCustom class from components folder
-              image: foodDetail.foodDescription['image'][index],
-              name: foodDetail.foodDescription['name'][index],
-              rate: foodDetail.foodDescription['rate'][index],
-              caption: foodDetail.foodDescription['caption'][index],
-              time: foodDetail.foodDescription['time'][index],
-              deliveryPrice: foodDetail.foodDescription['deliveryPrice'][index],
-              heartButtonPressed: heartPressed[index],
+            child: Container(
+              width: 310,
+              height: 390,
+              child: ThirdRowCustom( // use ThirdRowCustom class from components folder
+                image: foodDetail.foodDescription['image'][index],
+                name: foodDetail.foodDescription['name'][index],
+                rate: foodDetail.foodDescription['rate'][index],
+                caption: foodDetail.foodDescription['caption'][index],
+                time: foodDetail.foodDescription['time'][index],
+                deliveryPrice: foodDetail.foodDescription['deliveryPrice'][index],
+                heartButtonPressed: heartPressed[index],
+              ),
             ),
           );
         },
-      ),
-    );
+      );
   }
 }
 
