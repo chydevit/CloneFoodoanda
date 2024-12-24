@@ -20,10 +20,10 @@ class ThirdRowImageUrl {
       'https://images.deliveryhero.io/image/fd-kh/LH/y9bl-hero.jpg?width=512&height=384&quality=45'
     ],
     'name': ['tube coffee (Phnom Penh)', 'nham chgangh (Pocentong)', 'kfc (Kampuchea Krom)', 'Cafe Amazon (Pocentong)'],
-    'rate': ['(1000+)', '(500+)','(900+)', '(1000+)'],
-    'caption': ['\$\$  Tea & Coffee', '\$\$  Hot Pot','\$\$ Fast Food', '\$ Tea & Coffee'],
+    'rate': ['1000', '500','900', '1000'],
+    'caption': ['Tea & Coffee', 'Hot Pot','Fast Food', 'Tea & Coffee'],
     'time': ['10-25', '20-35','30-40', '15-25'],
-    'deliveryPrice': ['\$0.65', '\$2','\$1.80', '\$2.5']
+    'deliveryPrice': ['0.65', '2','1.80', '2.5']
   };
 }
 

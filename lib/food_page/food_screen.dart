@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_clone_foodpenda/food_page/components/food_detail.dart';
+import 'package:test_clone_foodpenda/food_page/components/image_food_detail.dart';
 import 'package:test_clone_foodpenda/food_page/components/search_button.dart';
 import 'package:test_clone_foodpenda/food_page/components/text_style.dart';
 import 'package:test_clone_foodpenda/food_page/screen/body/favourite_cuisines_row/favoriteRow.dart';
@@ -171,11 +173,36 @@ class _FoodScreenState extends State<FoodScreen> {
                           ),
                         ),
                         Container(
-                          color: Colors.white,
+                            color: Colors.white,
                             width: width,
-                            height: 215,
-                            child: FavouriteRow()
+                            height: 190,
+                            child: FavouriteRow()),
+
+                        Container(
+                          width: width,
+                          height: 6,
+                          color: Colors.grey.shade200,
                         ),
+
+                        //Explor restaurants
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          width: width,
+                          height: height,
+                          color: Colors.white,
+                          child: ImageFoodDetail(
+                            wholeWidth: width ,
+                            wholeHeight: 310,
+                            imageWidth: width,
+                            imageHeight: 220,
+                            image: 'https://assets.surlatable.com/m/15a89c2d9c6c1345/72_dpi_webp-REC-283110_Pizza.jpg',
+                            name: 'KFC',
+                            rate: '1000',
+                            caption: 'Chicken fried',
+                            time: '20-30',
+                            deliveryPrice: '2',
+                          ),
+                        )
                       ],
                     ),
                   )),

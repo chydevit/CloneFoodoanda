@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_clone_foodpenda/food_page/components/food_detail.dart';
 import 'package:test_clone_foodpenda/food_page/components/text_style.dart';
 
 class ThirdRowCustom extends StatefulWidget {
@@ -71,7 +72,6 @@ class _ThirdRowCustomState extends State<ThirdRowCustom> {
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.red,
                     ),
                     width: 35,
                     height: 35,
@@ -122,55 +122,11 @@ class _ThirdRowCustomState extends State<ThirdRowCustom> {
             Expanded(
               child: Container(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                              width: 185,
-                              height: 20,
-                              child: Text(widget.name.toUpperCase(),
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                          ),
-                          // TxtStyle(
-                          //     title: widget.name.toUpperCase(),
-                          //     fontWeight: FontWeight.bold),
-                          SizedBox(width: 5),
-                          Icon(Icons.star, color: Colors.orange),
-                          TxtStyle(
-                              title: "5.0",
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                          TxtStyle(
-                              title: widget.rate,
-                              fontSize: 12,
-                              color: Colors.grey),
-                        ],
-                      ),
-                      TxtStyle(
-                          title: widget.caption,
-                          color: Colors.black.withOpacity(0.8)),
-                      Row(
-                        children: [
-                          const Icon(Icons.access_time, size: 15),
-                          const SizedBox(width: 5),
-                          Text("${widget.time} min"),
-                          const SizedBox(width: 15),
-                          const Icon(Icons.motorcycle, size: 15),
-                          TxtStyle(
-                              title: widget.deliveryPrice,
-                              color: Colors.black.withOpacity(0.8)),
-                        ],
-                      )
-                    ],
-                  )),
+                  child: FoodDetail(name: widget.name, rate: widget.rate, caption: widget.caption, time: widget.time, deliveryPrice: widget.deliveryPrice)
+              ),
             ),
           ],
-        ));
+        )
+    );
   }
 }

@@ -28,22 +28,24 @@ class FoodDetail extends StatelessWidget {
       children: [
         Row(
           children: [
-            TxtStyle(title: name.toUpperCase(), fontWeight: FontWeight.bold),
-            SizedBox(width: 5,),
+            SizedBox(width: 180,
+            child: Text(name, style: TextStyle(fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis,),
+            ),
+            Spacer(),
             Icon(Icons.star, color: Colors.orange,),
             TxtStyle(title: "5.0", fontSize: 12, fontWeight: FontWeight.bold),
-            TxtStyle(title: rate, fontSize: 12, color: Colors.grey)
+            TxtStyle(title: "($rate+)", fontSize: 12, color: Colors.grey)
           ],
         ),
 
-        TxtStyle(title: caption, color: Colors.black.withOpacity(0.8) ),
+        TxtStyle(title: ("\$\$ . $caption"), color: Colors.black.withOpacity(0.8) ),
         Row(children: [
           Icon(Icons.access_time, size: 15),
-          SizedBox(width: 5,),
+          SizedBox(width: 3,),
           Text(time+ " min"),
           SizedBox(width: 15,),
           Icon(Icons.motorcycle, size: 15,),
-          TxtStyle(title: deliveryPrice, color: Colors.black.withOpacity(0.8))
+          TxtStyle(title: ("\$$deliveryPrice"), color: Colors.black.withOpacity(0.8))
         ],
         )
       ],
